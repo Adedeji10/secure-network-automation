@@ -1,6 +1,4 @@
-\# Secure Network Automation Framework
-
-\## With GitOps and Proactive Compliance Auditing
+\# Secure Network Automation Framework With GitOps and Proactive Compliance Auditing
 
 
 
