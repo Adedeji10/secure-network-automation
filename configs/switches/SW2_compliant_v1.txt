@@ -22,6 +22,7 @@ line vty 0 4
  transport input ssh
  login local
  exec-timeout 5 0
+ access-class MGMT-ACCESS in
 !
 line con 0
  login local
