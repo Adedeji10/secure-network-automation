@@ -1,0 +1,21 @@
+---
+# site.yml - Master deployment playbook
+# Only executed after Inspector audit passes
+
+- name: Deploy Router Configurations
+  hosts: routers
+  gather_facts: false
+  roles:
+    - cisco_ios_router
+
+- name: Deploy Switch Configurations
+  hosts: switches
+  gather_facts: false
+  roles:
+    - cisco_ios_switch
+
+- name: Deploy Firewall Configurations
+  hosts: firewalls
+  gather_facts: false
+  roles:
+    - generic_firewall

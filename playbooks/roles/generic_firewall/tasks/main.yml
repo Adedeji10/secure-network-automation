@@ -1,0 +1,18 @@
+---
+# roles/generic_firewall/tasks/main.yml
+- name: Apply firewall configuration
+  ansible.builtin.copy:
+    src: "{{ config_file }}"
+    dest: "/etc/frr/frr.conf"
+    mode: '0644'
+  when: config_file is defined
+
+- name: Verify firewall is reachable
+  ansible.builtin.command:
+    cmd: hostname
+  register: hostname_output
+  changed_when: false
+
+- name: Display hostname
+  ansible.builtin.debug:
+    msg: "Firewall hostname: {{ hostname_output.stdout }}"
