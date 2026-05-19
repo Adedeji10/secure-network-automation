@@ -1,0 +1,20 @@
+! Device: SW2
+! VIOLATION: Weak SNMP community string (HIGH)
+hostname SW2
+!
+ip ssh version 2
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+service password-encryption
+!
+snmp-server community admin123 RW
+!
+line vty 0 4
+ transport input ssh
+ login local
+!
+logging host 192.168.100.100
+ntp server 192.168.100.200
+!
+end

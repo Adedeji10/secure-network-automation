@@ -1,0 +1,57 @@
+! Device: R2
+! Type: Router
+! Location: Distribution Layer
+! Generated: 2025-01-02
+hostname R2
+!
+ip ssh version 2
+ip ssh time-out 60
+ip ssh authentication-retries 3
+!
+no service telnet
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+service password-encryption
+!
+banner motd ^ Authorized Access Only ^
+!
+username admin privilege 15 secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+line vty 0 4
+ transport input ssh
+ login local
+ exec-timeout 5 0
+!
+line con 0
+ login local
+ exec-timeout 5 0
+!
+ip access-list standard MGMT-ACCESS
+ permit 192.168.100.0 0.0.0.255
+ deny any log
+!
+logging host 192.168.100.100
+logging trap informational
+logging buffered 16384
+!
+ntp server 192.168.100.200
+ntp update-calendar
+!
+no snmp-server community public
+no snmp-server community private
+snmp-server community SecureString123 RO MGMT-ACCESS
+!
+interface GigabitEthernet0/0
+ ip address 10.0.2.1 255.255.255.252
+ no shutdown
+ description Link-to-SW1
+!
+no service finger
+no service udp-small-servers
+no service tcp-small-servers
+no ip http server
+no ip http secure-server
+no cdp run
+!
+end

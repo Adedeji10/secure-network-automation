@@ -1,0 +1,20 @@
+! Device: R2
+! VIOLATION: No syslog server configured (MEDIUM)
+hostname R2
+!
+ip ssh version 2
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+service password-encryption
+!
+line vty 0 4
+ transport input ssh
+ login local
+ exec-timeout 5 0
+!
+no logging host
+!
+ntp server 192.168.100.200
+!
+end

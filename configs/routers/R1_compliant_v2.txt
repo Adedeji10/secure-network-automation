@@ -1,0 +1,71 @@
+! Device: R1
+! Type: Router
+! Location: Core Network
+! Generated: 2025-01-02
+hostname R1
+!
+! SSH Configuration
+ip ssh version 2
+ip ssh time-out 60
+ip ssh authentication-retries 3
+!
+! Disable Telnet
+no service telnet
+!
+! Enable Secret (hashed)
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+! Password Encryption
+service password-encryption
+!
+! Banner
+banner motd ^ Authorized Access Only ^
+!
+! User Authentication
+username admin privilege 15 secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+! VTY Lines - SSH only
+line vty 0 4
+ transport input ssh
+ login local
+ exec-timeout 5 0
+!
+! Console Security
+line con 0
+ login local
+ exec-timeout 5 0
+!
+! Access Control List
+ip access-list standard MGMT-ACCESS
+ permit 192.168.100.0 0.0.0.255
+ deny any log
+!
+! Syslog Configuration
+logging host 192.168.100.100
+logging trap informational
+logging buffered 16384
+!
+! NTP Configuration
+ntp server 192.168.100.200
+ntp update-calendar
+!
+! SNMP Configuration
+no snmp-server community public
+no snmp-server community private
+snmp-server community SecureString123 RO MGMT-ACCESS
+!
+! Interface Configuration
+interface GigabitEthernet0/0
+ ip address 10.0.1.1 255.255.255.252
+ no shutdown
+ description Link-to-SW1
+!
+! Disable unused services
+no service finger
+no service udp-small-servers
+no service tcp-small-servers
+no ip http server
+no ip http secure-server
+no cdp run
+!
+end

@@ -1,0 +1,13 @@
+! Device: R1
+! VIOLATION: VTY lines open to all, no ACL (CRITICAL)
+hostname R1
+!
+line vty 0 15
+ transport input all
+ no login
+!
+enable password r1pass
+!
+ip ssh version 1
+!
+end

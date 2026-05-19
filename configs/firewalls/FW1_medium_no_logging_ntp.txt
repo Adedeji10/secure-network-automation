@@ -1,0 +1,18 @@
+! Device: FW1
+! VIOLATION: Missing both logging and NTP (MEDIUM)
+hostname FW1
+!
+ip ssh version 2
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+service password-encryption
+!
+line vty 0 4
+ transport input ssh
+ login local
+!
+no logging host
+no ntp server
+!
+end
