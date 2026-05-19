@@ -1,0 +1,15 @@
+! Device: R3
+! VIOLATION: No SSH configured at all (HIGH)
+hostname R3
+!
+line vty 0 4
+ transport input none
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+service password-encryption
+!
+logging host 192.168.100.100
+ntp server 192.168.100.200
+!
+end

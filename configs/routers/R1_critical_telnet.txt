@@ -1,0 +1,15 @@
+! Device: R1
+! VIOLATION: Telnet enabled (CRITICAL)
+hostname R1
+!
+service telnet
+!
+line vty 0 4
+ transport input telnet
+ login
+!
+enable password cisco123
+!
+no ip ssh version 2
+!
+end

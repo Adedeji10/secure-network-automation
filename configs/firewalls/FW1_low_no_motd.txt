@@ -1,0 +1,19 @@
+! Device: FW1
+! VIOLATION: Missing MOTD banner documentation (LOW)
+hostname FW1
+!
+ip ssh version 2
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+service password-encryption
+!
+line vty 0 4
+ transport input ssh
+ login local
+ exec-timeout 5 0
+!
+logging host 192.168.100.100
+ntp server 192.168.100.200
+!
+end

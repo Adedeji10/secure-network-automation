@@ -1,0 +1,13 @@
+! Device: R2
+! VIOLATION: Telnet enabled, no authentication (CRITICAL)
+hostname R2
+!
+service telnet
+!
+line vty 0 4
+ transport input telnet
+ no login
+!
+enable password weakpass
+!
+end

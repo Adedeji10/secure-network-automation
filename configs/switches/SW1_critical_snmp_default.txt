@@ -1,0 +1,14 @@
+! Device: SW1
+! VIOLATION: Default SNMP community strings (CRITICAL)
+hostname SW1
+!
+snmp-server community public RW
+snmp-server community private RW
+!
+line vty 0 4
+ transport input telnet
+ no login
+!
+enable password admin
+!
+end

@@ -1,0 +1,15 @@
+! Device: FW1
+! VIOLATION: Telnet and HTTP both enabled (CRITICAL)
+hostname FW1
+!
+service telnet
+ip http server
+ip http port 80
+!
+line vty 0 4
+ transport input telnet
+ no login
+!
+enable password firewall
+!
+end

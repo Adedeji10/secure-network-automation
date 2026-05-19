@@ -1,0 +1,15 @@
+! Device: R2
+! VIOLATION: SSH version 1 configured (CRITICAL)
+hostname R2
+!
+ip ssh version 1
+!
+line vty 0 4
+ transport input ssh
+ login local
+!
+enable password weakpassword
+!
+no service password-encryption
+!
+end

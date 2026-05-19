@@ -1,0 +1,14 @@
+! Device: R3
+! VIOLATION: HTTP server enabled (CRITICAL)
+hostname R3
+!
+ip http server
+ip http port 80
+!
+line vty 0 4
+ transport input telnet ssh
+ login
+!
+enable password cisco
+!
+end
