@@ -25,7 +25,7 @@ jobs:
       - name: Run Inspector on all configuration files
         run: |
           cd inspector
-          python3 audit.py ../configs/routers/R1_compliant_v1.txt ../configs/routers/R2_compliant_v1.txt ../configs/routers/R3_compliant_v1.txt
+          python3 audit.py ../configs_pass_test/
 
   deploy:
     name: Ansible Deployment
