@@ -1,6 +1,7 @@
 ! Device: R1
 ! Type: Router
 ! Location: Core Network
+! Supervisor Demo: 2026-07-10 15:31
 ! Generated: 2025-01-01
 hostname R1
 !
