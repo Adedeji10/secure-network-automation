@@ -1,6 +1,7 @@
 ! Device: R1
 ! Type: Router
 ! Location: Core Network
+! Supervisor Demo: 2026-08-04 12:02
 ! Generated: 2025-01-01
 hostname R1
 !
@@ -69,4 +70,4 @@ no ip http server
 no ip http secure-server
 no cdp run
 !
-end
+end! Demo run: Fri Jul 10 15:39:26 WAT 2026
